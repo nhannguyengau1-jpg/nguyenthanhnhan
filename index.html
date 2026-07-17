@@ -9,8 +9,8 @@
     <style>
         body { font-family: 'Inter', system-ui, sans-serif; }
         .logo-font { font-family: 'Playfair Display', Georgia, serif; letter-spacing: -2px; }
-        .photo-card { transition: all 0.3s ease; }
-        .photo-card:hover { transform: translateY(-5px); }
+        .photo-card { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .photo-card:hover { transform: translateY(-6px); box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1); }
     </style>
 </head>
 <body class="bg-[#F8F4ED] text-zinc-900">
@@ -35,19 +35,24 @@
             <h1 class="text-[68px] md:text-[82px] font-semibold tracking-[-3.5px] logo-font leading-none mb-5">
                 NHAN NGUYEN
             </h1>
-            <p class="text-2xl text-zinc-600">Photographer</p>
+            <p class="text-2xl text-zinc-600">Photographer &amp; Visual Artist</p>
         </div>
     </div>
 
     <!-- Work -->
     <section class="max-w-screen-2xl mx-auto px-8 pb-16">
-        <div class="mb-8">
-            <h2 class="text-5xl font-semibold tracking-tight">Work</h2>
+        <div class="mb-8 flex items-end justify-between">
+            <div>
+                <h2 class="text-5xl font-semibold tracking-tight">Work</h2>
+            </div>
+            <div class="hidden md:block text-sm text-zinc-500">
+                Upload new images as <strong>beige-X.jpg</strong> or <strong>pink-X.jpg</strong>
+            </div>
         </div>
 
         <!-- Search -->
         <div class="mb-6 max-w-sm">
-            <input type="text" id="search-input" placeholder="Search photographs..." 
+            <input type="text" id="search-input" placeholder="Search work..." 
                    class="w-full px-4 py-3 border border-[#D4C9B3] rounded-2xl focus:outline-none">
         </div>
 
@@ -57,19 +62,26 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Footer - BẢN QUYỀN MẠNH -->
     <footer class="bg-[#2C2520] text-[#EDE4D7] py-16">
         <div class="max-w-screen-2xl mx-auto px-8">
-            <div class="max-w-2xl mx-auto text-center">
+            <div class="max-w-3xl mx-auto text-center">
                 <div class="mb-6">
                     <span class="text-4xl font-semibold logo-font tracking-[-1px]">NHAN NGUYEN</span>
                 </div>
 
-                <p class="text-lg font-medium mb-5">All Rights Reserved.</p>
+                <p class="text-lg font-medium mb-6">All Rights Reserved.</p>
 
-                <div class="text-[#C9B8A3] text-sm leading-relaxed max-w-lg mx-auto">
-                    <p>© 2014 — 2026 NHAN NGUYEN. All photographs, designs, and creative works on this website are the exclusive intellectual property of NHAN NGUYEN.</p>
-                    <p class="mt-2">Unauthorized reproduction, distribution, or commercial use is strictly prohibited.</p>
+                <div class="text-[#C9B8A3] text-sm leading-relaxed max-w-xl mx-auto">
+                    <p class="mb-3">
+                        © 2014 — 2026 <strong>NHAN NGUYEN</strong>. 
+                        All photographs, custom designs, and creative works displayed on this website are the 
+                        <strong>exclusive intellectual property</strong> of NHAN NGUYEN and are protected by 
+                        <strong>Copyright</strong> and <strong>Trademark</strong> laws.
+                    </p>
+                    <p>
+                        Unauthorized reproduction, distribution, modification, or commercial use without prior written permission is strictly prohibited.
+                    </p>
                 </div>
 
                 <div class="mt-8 text-xs text-[#A38B6E]">
@@ -80,25 +92,43 @@
     </footer>
 
     <script>
-        // ================== TẢI ẢNH TỰ ĐỘNG ==================
+        // ================== TỰ ĐỘNG TẢI ẢNH ==================
         async function loadGallery() {
             const gallery = document.getElementById('gallery');
-            gallery.innerHTML = '';
+            gallery.innerHTML = `
+                <div class="col-span-full flex justify-center py-10">
+                    <div class="flex items-center gap-x-3 text-zinc-500">
+                        <i class="fa-solid fa-spinner fa-spin"></i>
+                        <span>Loading photographs...</span>
+                    </div>
+                </div>
+            `;
 
             const prefixes = ['beige-', 'pink-'];
             const maxImages = 50;
+            let loadedImages = [];
 
             for (let prefix of prefixes) {
                 for (let i = 1; i <= maxImages; i++) {
                     const filename = `${prefix}${i}.jpg`;
                     const exists = await checkImageExists(filename);
-
                     if (exists) {
-                        const card = createPhotoCard(filename);
-                        gallery.appendChild(card);
+                        loadedImages.push(filename);
                     }
                 }
             }
+
+            gallery.innerHTML = '';
+
+            if (loadedImages.length === 0) {
+                gallery.innerHTML = `<p class="col-span-full text-center py-10 text-zinc-500">No images found. Please upload images as beige-X.jpg or pink-X.jpg</p>`;
+                return;
+            }
+
+            loadedImages.forEach(filename => {
+                const card = createPhotoCard(filename);
+                gallery.appendChild(card);
+            });
         }
 
         function checkImageExists(url) {
