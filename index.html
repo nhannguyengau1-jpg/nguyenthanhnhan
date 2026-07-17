@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NHAN NGUYEN • Custom Crocs</title>
+    <title>NHAN NGUYEN • カスタム クロックス</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         body { font-family: 'Inter', system-ui, sans-serif; }
         .logo-font { font-family: 'Playfair Display', Georgia, serif; letter-spacing: -2.5px; }
-        .snap-card { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
-        .snap-card:hover { transform: translateY(-8px); box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.12); }
+        .snap-card { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .snap-card:hover { transform: translateY(-6px); }
     </style>
 </head>
 <body class="bg-[#F8F4ED] text-zinc-900">
@@ -27,33 +27,25 @@
                 </div>
 
                 <div class="hidden md:flex items-center gap-x-8 text-sm font-medium">
-                    <a href="#snaps" class="hover:text-[#3f2e1f]">Collection</a>
-                    <a href="#how" class="hover:text-[#3f2e1f]">How it Works</a>
-                    <a href="#pricing" class="hover:text-[#3f2e1f]">Pricing</a>
+                    <a href="#snaps" class="hover:text-[#3f2e1f]">コレクション</a>
+                    <a href="#how" class="hover:text-[#3f2e1f]">使い方</a>
+                    <a href="#pricing" class="hover:text-[#3f2e1f]">料金</a>
                     
-                    <div class="flex items-center gap-x-4 text-xl">
-                        <a href="#" class="text-zinc-600 hover:text-[#3f2e1f]"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#" class="text-zinc-600 hover:text-[#3f2e1f]"><i class="fa-brands fa-tiktok"></i></a>
-                    </div>
-
                     <div class="flex items-center gap-x-3">
-                        <button onclick="showCart()" class="relative px-4 py-2 border border-[#D4C9B3] rounded-2xl hover:bg-[#EDE4D7]">
+                        <button onclick="showCartModal()" class="relative px-4 py-2 border border-[#D4C9B3] rounded-2xl hover:bg-[#EDE4D7]">
                             <i class="fa-solid fa-shopping-cart"></i>
                             <span id="cart-count" class="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">0</span>
                         </button>
-                        <button onclick="showWishlist()" class="px-4 py-2 border border-[#D4C9B3] rounded-2xl hover:bg-[#EDE4D7]">
+                        <button onclick="showWishlistModal()" class="relative px-4 py-2 border border-[#D4C9B3] rounded-2xl hover:bg-[#EDE4D7]">
                             <i class="fa-solid fa-heart"></i>
+                            <span id="wishlist-count" class="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">0</span>
                         </button>
                     </div>
 
                     <a href="#contact" class="px-6 py-3 bg-[#3f2e1f] text-white text-sm font-semibold rounded-2xl hover:bg-black transition">
-                        Order Custom
+                        カスタムを注文
                     </a>
                 </div>
-
-                <button onclick="toggleMobileMenu()" class="md:hidden text-2xl">
-                    <i class="fa-solid fa-bars"></i>
-                </button>
             </div>
         </div>
     </nav>
@@ -62,67 +54,66 @@
     <div class="max-w-screen-2xl mx-auto px-8 pt-16 pb-20">
         <div class="max-w-4xl">
             <div class="inline-block px-4 py-1.5 bg-[#EDE4D7] text-[#3f2e1f] rounded-full text-sm font-medium mb-6">
-                Limited Custom Pieces
+                限定カスタム作品
             </div>
             <h1 class="text-[80px] md:text-[105px] font-semibold tracking-[-5.5px] logo-font leading-none mb-6">
                 NHAN<br>NGUYEN
             </h1>
-            <p class="text-3xl text-zinc-600 max-w-lg">Handcrafted custom Crocs with unique charm details.</p>
+            <p class="text-3xl text-zinc-600 max-w-lg">ユニークなチャームをあしらった手作りカスタムクロックス。</p>
             
             <div class="mt-10 flex flex-wrap gap-4">
-                <a href="#snaps" class="px-9 py-4 bg-[#3f2e1f] text-white font-semibold rounded-2xl hover:bg-black transition">Explore Collection</a>
-                <a href="#contact" class="px-9 py-4 border border-[#D4C9B3] font-semibold rounded-2xl hover:bg-[#EDE4D7] transition">Order Custom</a>
+                <a href="#snaps" class="px-9 py-4 bg-[#3f2e1f] text-white font-semibold rounded-2xl hover:bg-black transition">コレクションを見る</a>
+                <a href="#contact" class="px-9 py-4 border border-[#D4C9B3] font-semibold rounded-2xl hover:bg-[#EDE4D7] transition">カスタムを注文</a>
             </div>
         </div>
     </div>
 
-    <!-- Fresh Snaps -->
+    <!-- Collection -->
     <section id="snaps" class="max-w-screen-2xl mx-auto px-8 pb-20">
-        <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-8">
+        <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-8">
             <div>
-                <h2 class="text-5xl font-semibold tracking-[-2px]">Fresh Snaps</h2>
-                <p class="text-xl text-zinc-500 mt-1">21917C Series • Custom Crocs</p>
+                <h2 class="text-5xl font-semibold tracking-[-2px]">フレッシュスナップ</h2>
+                <p class="text-xl text-zinc-500 mt-1">21917C シリーズ • カスタム クロックス</p>
             </div>
 
-            <!-- Search -->
-            <div class="flex-1 max-w-md">
-                <input type="text" id="search-input" placeholder="Search snaps..." 
-                       class="w-full px-4 py-3 border border-[#D4C9B3] rounded-2xl focus:outline-none">
-            </div>
-
-            <!-- Filter -->
-            <div class="flex gap-2">
-                <button onclick="filterGallery('all')" id="filter-all" class="px-5 py-2 rounded-full border border-[#D4C9B3] text-sm font-medium bg-[#3f2e1f] text-white">All</button>
-                <button onclick="filterGallery('beige')" id="filter-beige" class="px-5 py-2 rounded-full border border-[#D4C9B3] text-sm font-medium">Beige</button>
-                <button onclick="filterGallery('pink')" id="filter-pink" class="px-5 py-2 rounded-full border border-[#D4C9B3] text-sm font-medium">Pink</button>
+            <div class="flex flex-col sm:flex-row gap-3">
+                <input type="text" id="search-input" placeholder="スナップを検索..." 
+                       class="w-full sm:w-72 px-4 py-3 border border-[#D4C9B3] rounded-2xl">
+                
+                <select id="sort-select" onchange="sortGallery()" 
+                        class="px-4 py-3 border border-[#D4C9B3] rounded-2xl bg-white">
+                    <option value="default">並び替え</option>
+                    <option value="price-low">価格が安い順</option>
+                    <option value="price-high">価格が高い順</option>
+                </select>
             </div>
         </div>
 
         <div id="gallery" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-6">
-            <!-- Ảnh sẽ tự động load -->
+            <!-- JS tự động load -->
         </div>
     </section>
 
     <!-- How It Works -->
     <section id="how" class="max-w-screen-2xl mx-auto px-8 py-16 border-t border-[#EDE4D7]">
         <div class="text-center mb-12">
-            <h2 class="text-5xl font-semibold tracking-tight">How It Works</h2>
+            <h2 class="text-5xl font-semibold tracking-tight">使い方</h2>
         </div>
         <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             <div class="text-center">
                 <div class="w-14 h-14 bg-[#3f2e1f] text-white rounded-2xl flex items-center justify-center mx-auto mb-6 text-2xl font-bold">1</div>
-                <h3 class="font-semibold text-xl mb-3">Choose Your Base</h3>
-                <p class="text-zinc-500">Select your Crocs model and color.</p>
+                <h3 class="font-semibold text-xl mb-3">ベースを選択</h3>
+                <p class="text-zinc-500">クロックスのモデルとカラーを選んでください。</p>
             </div>
             <div class="text-center">
                 <div class="w-14 h-14 bg-[#3f2e1f] text-white rounded-2xl flex items-center justify-center mx-auto mb-6 text-2xl font-bold">2</div>
-                <h3 class="font-semibold text-xl mb-3">Customize</h3>
-                <p class="text-zinc-500">Choose your preferred charms and style.</p>
+                <h3 class="font-semibold text-xl mb-3">カスタマイズ</h3>
+                <p class="text-zinc-500">お好みのチャームとスタイルを選択してください。</p>
             </div>
             <div class="text-center">
                 <div class="w-14 h-14 bg-[#3f2e1f] text-white rounded-2xl flex items-center justify-center mx-auto mb-6 text-2xl font-bold">3</div>
-                <h3 class="font-semibold text-xl mb-3">Receive</h3>
-                <p class="text-zinc-500">We handcraft and deliver your piece.</p>
+                <h3 class="font-semibold text-xl mb-3">受け取り</h3>
+                <p class="text-zinc-500">手作りして、お届けします。</p>
             </div>
         </div>
     </section>
@@ -130,25 +121,25 @@
     <!-- Pricing -->
     <section id="pricing" class="max-w-screen-2xl mx-auto px-8 py-16 border-t border-[#EDE4D7] bg-white">
         <div class="text-center mb-12">
-            <h2 class="text-5xl font-semibold tracking-tight">Pricing</h2>
+            <h2 class="text-5xl font-semibold tracking-tight">料金</h2>
         </div>
         <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
             <div class="border border-[#EDE4D7] rounded-3xl p-8">
-                <h3 class="text-2xl font-semibold mb-2">Standard Custom</h3>
+                <h3 class="text-2xl font-semibold mb-2">スタンダード カスタム</h3>
                 <p class="text-4xl font-semibold mb-6">$85 – $120</p>
                 <ul class="space-y-3 text-zinc-600">
-                    <li>✓ Up to 8 custom charms</li>
-                    <li>✓ Your choice of color</li>
-                    <li>✓ 2–3 weeks delivery</li>
+                    <li>✓ 最大8個のカスタムチャーム</li>
+                    <li>✓ お好みのカラー</li>
+                    <li>✓ 納期 2〜3週間</li>
                 </ul>
             </div>
             <div class="border border-[#EDE4D7] rounded-3xl p-8 bg-[#3f2e1f] text-white">
-                <h3 class="text-2xl font-semibold mb-2">Premium Custom</h3>
+                <h3 class="text-2xl font-semibold mb-2">プレミアム カスタム</h3>
                 <p class="text-4xl font-semibold mb-6">$150 – $220</p>
                 <ul class="space-y-3 text-[#EDE4D7]">
-                    <li>✓ Up to 15 custom charms</li>
-                    <li>✓ Premium materials</li>
-                    <li>✓ 1–2 weeks delivery</li>
+                    <li>✓ 最大15個のカスタムチャーム</li>
+                    <li>✓ プレミアム素材使用</li>
+                    <li>✓ 納期 1〜2週間</li>
                 </ul>
             </div>
         </div>
@@ -157,52 +148,143 @@
     <!-- Contact -->
     <section id="contact" class="max-w-screen-2xl mx-auto px-8 py-16 border-t border-[#EDE4D7]">
         <div class="max-w-2xl mx-auto text-center">
-            <h2 class="text-5xl font-semibold tracking-tight mb-4">Ready to create your custom pair?</h2>
-            <p class="text-xl text-zinc-500 mb-10">Let’s make something unique together.</p>
-
+            <h2 class="text-5xl font-semibold tracking-tight mb-4">カスタムペアを作成する準備はできましたか？</h2>
+            <p class="text-xl text-zinc-500 mb-10">一緒にユニークなものを作りましょう。</p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="#" class="px-10 py-4 bg-[#3f2e1f] text-white font-semibold rounded-2xl hover:bg-black transition flex items-center justify-center gap-x-3">
-                    <i class="fa-brands fa-instagram mr-2"></i> Message on Instagram
+                <a href="#" class="px-10 py-4 bg-[#3f2e1f] text-white font-semibold rounded-2xl flex items-center justify-center gap-x-3">
+                    <i class="fa-brands fa-instagram mr-2"></i> Instagramでメッセージ
                 </a>
-                <a href="mailto:contact@nhannguyen.com" class="px-10 py-4 border border-[#D4C9B3] font-semibold rounded-2xl hover:bg-[#EDE4D7] transition flex items-center justify-center gap-x-3">
-                    <i class="fa-solid fa-envelope mr-2"></i> Send an Email
+                <a href="mailto:contact@nhannguyen.com" class="px-10 py-4 border border-[#D4C9B3] font-semibold rounded-2xl flex items-center justify-center gap-x-3">
+                    <i class="fa-solid fa-envelope mr-2"></i> メールを送信
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- ==================== FOOTER BẢN QUYỀN MẠNH (TIẾNG ANH) ==================== -->
     <footer class="bg-[#3f2e1f] text-[#EDE4D7] py-16">
-        <div class="max-w-screen-2xl mx-auto px-8 text-center">
-            <p class="text-5xl font-semibold tracking-[-1.5px] mb-3">© NHAN NGUYEN</p>
-            <p class="mb-2">First Published: July 2, 2014</p>
-            <p class="text-sm">All designs and photographs are the exclusive property of NHAN NGUYEN.</p>
+        <div class="max-w-screen-2xl mx-auto px-8">
+            <div class="text-center border-t border-[#5C4A3A] pt-10">
+                
+                <div class="flex justify-center items-center gap-x-3 mb-5">
+                    <div class="w-10 h-10 bg-white rounded-2xl flex items-center justify-center">
+                        <span class="text-[#3f2e1f] text-[26px] font-bold logo-font">N</span>
+                    </div>
+                    <span class="text-4xl font-semibold logo-font tracking-[-1.5px]">NHAN NGUYEN</span>
+                </div>
+
+                <p class="text-xl font-semibold tracking-tight mb-2">
+                    © NHAN NGUYEN. All Rights Reserved.
+                </p>
+
+                <p class="max-w-lg mx-auto text-[#C9B8A3] text-sm leading-relaxed mb-4">
+                    All designs, custom Crocs, charm works, photographs, and creative concepts 
+                    are the <strong>exclusive intellectual property</strong> of NHAN NGUYEN.<br>
+                    Any unauthorized reproduction, distribution, modification, or commercial use 
+                    is strictly prohibited and may result in legal action.
+                </p>
+
+                <div class="text-xs text-[#A38B6E] space-y-1">
+                    <p>First Published: July 2, 2014</p>
+                    <p>© 2014 — 2026 NHAN NGUYEN. All rights reserved.</p>
+                </div>
+
+            </div>
         </div>
     </footer>
 
-    <script>
-        let cart = [];
-        let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+    <!-- Quick View Modal -->
+    <div id="quickview-modal" onclick="if (event.target.id === 'quickview-modal') hideQuickView()" 
+         class="hidden fixed inset-0 bg-black/70 z-[999] flex items-center justify-center p-4">
+        <div onclick="event.stopImmediatePropagation()" class="bg-white w-full max-w-2xl rounded-3xl overflow-hidden">
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/2">
+                    <img id="quickview-image" class="w-full h-full object-cover" alt="">
+                </div>
+                <div class="md:w-1/2 p-8">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 id="quickview-name" class="text-2xl font-semibold"></h3>
+                            <p class="text-sm text-zinc-500">作者: NHAN NGUYEN • 2014</p>
+                        </div>
+                        <div id="quickview-price" class="text-3xl font-semibold"></div>
+                    </div>
 
-        // ================== LOAD GALLERY ==================
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium mb-2">サイズを選択</label>
+                        <div class="flex flex-wrap gap-2" id="size-options"></div>
+                    </div>
+
+                    <button onclick="addToCartFromQuickView()" 
+                            class="w-full py-3 bg-[#3f2e1f] text-white rounded-2xl font-semibold hover:bg-black transition mb-3">
+                        カートに追加
+                    </button>
+                    <button onclick="hideQuickView()" class="w-full py-3 border border-[#D4C9B3] rounded-2xl font-medium">
+                        閉じる
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div id="cart-modal" onclick="if (event.target.id === 'cart-modal') hideCartModal()" 
+         class="hidden fixed inset-0 bg-black/60 z-[999] flex items-center justify-center p-4">
+        <div onclick="event.stopImmediatePropagation()" class="bg-white w-full max-w-lg rounded-3xl shadow-xl">
+            <div class="p-6 border-b flex justify-between items-center">
+                <h3 class="text-xl font-semibold">カート</h3>
+                <button onclick="hideCartModal()" class="text-2xl">×</button>
+            </div>
+            <div id="cart-items" class="p-6 max-h-[55vh] overflow-auto space-y-4"></div>
+            <div class="p-6 border-t bg-[#F8F4ED]">
+                <div class="flex justify-between text-lg font-semibold mb-4">
+                    <span>合計金額</span>
+                    <span id="cart-total">$0</span>
+                </div>
+                <button onclick="checkout()" class="w-full py-3 bg-[#3f2e1f] hover:bg-black text-white rounded-2xl font-semibold transition">
+                    購入手続きへ進む
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Wishlist Modal -->
+    <div id="wishlist-modal" onclick="if (event.target.id === 'wishlist-modal') hideWishlistModal()" 
+         class="hidden fixed inset-0 bg-black/60 z-[999] flex items-center justify-center p-4">
+        <div onclick="event.stopImmediatePropagation()" class="bg-white w-full max-w-5xl rounded-3xl p-6">
+            <div class="flex justify-between mb-6">
+                <h3 class="text-2xl font-semibold">ウィッシュリスト</h3>
+                <button onclick="hideWishlistModal()" class="text-3xl">×</button>
+            </div>
+            <div id="wishlist-items" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-h-[70vh] overflow-auto"></div>
+        </div>
+    </div>
+
+    <script>
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+        let currentQuickView = null;
+        let allProducts = [];
+
         async function loadGallery() {
             const gallery = document.getElementById('gallery');
             gallery.innerHTML = '';
 
             const prefixes = ['beige-', 'pink-'];
-            const maxImages = 50;
+            let products = [];
 
             for (let prefix of prefixes) {
-                for (let i = 1; i <= maxImages; i++) {
+                for (let i = 1; i <= 40; i++) {
                     const filename = `${prefix}${i}.jpg`;
                     const exists = await checkImageExists(filename);
-                    
                     if (exists) {
-                        const card = createImageCard(filename);
-                        gallery.appendChild(card);
+                        const price = prefix === 'pink' ? 125 + (i % 5) * 10 : 95 + (i % 6) * 8;
+                        products.push({ filename, price, color: prefix === 'pink' ? 'pink' : 'beige' });
                     }
                 }
             }
+            allProducts = products;
+            renderGallery(products);
         }
 
         function checkImageExists(url) {
@@ -214,85 +296,184 @@
             });
         }
 
-        function createImageCard(filename) {
+        function renderGallery(products) {
+            const gallery = document.getElementById('gallery');
+            gallery.innerHTML = '';
+
+            products.forEach(product => {
+                const card = createImageCard(product);
+                gallery.appendChild(card);
+            });
+        }
+
+        function createImageCard(product) {
             const card = document.createElement('div');
             card.className = `snap-card bg-white border border-[#EDE4D7] rounded-3xl overflow-hidden`;
-            card.dataset.filename = filename;
-            card.dataset.color = filename.includes('pink') ? 'pink' : 'beige';
+            card.dataset.filename = product.filename;
+            card.dataset.price = product.price;
 
-            const isWishlisted = wishlist.includes(filename);
+            const isWishlisted = wishlist.includes(product.filename);
 
             card.innerHTML = `
-                <img src="${filename}" class="w-full aspect-[4/3] object-cover cursor-pointer" alt="${filename}">
-                
+                <img src="${product.filename}" class="w-full aspect-[4/3] object-cover cursor-pointer">
                 <div class="p-5">
-                    <div class="font-semibold text-xl mb-1">
-                        ${filename.replace('.jpg','').replace(/-/g,' ')}
-                    </div>
-                    
-                    <!-- Tác giả + Ngày xuất bản -->
-                    <div class="text-xs text-zinc-500 mb-3">
-                        <div><strong>Tác giả:</strong> NHAN NGUYEN</div>
-                        <div><strong>Xuất bản:</strong> 2 tháng 7 năm 2014</div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <div class="font-semibold">${product.filename.replace('.jpg','').replace(/-/g,' ')}</div>
+                            <div class="text-xs text-zinc-500 mt-1">
+                                <strong>Tác giả:</strong> NHAN NGUYEN<br>
+                                <strong>Xuất bản:</strong> 2014年7月2日
+                            </div>
+                        </div>
+                        <div class="font-semibold text-lg">$${product.price}</div>
                     </div>
 
-                    <div class="flex gap-2">
-                        <button onclick="addToCart('${filename}')" 
-                                class="flex-1 py-2 text-sm bg-[#3f2e1f] text-white rounded-xl hover:bg-black transition">
-                            Add to Cart
+                    <div class="flex gap-2 mt-4">
+                        <button onclick="addToCart('${product.filename}', ${product.price}, event)" 
+                                class="flex-1 py-2 bg-[#3f2e1f] text-white text-sm rounded-xl hover:bg-black transition">
+                            カートに追加
                         </button>
-                        <button onclick="toggleWishlist('${filename}', this)" 
-                                class="px-4 py-2 text-sm border border-[#D4C9B3] rounded-xl hover:bg-[#EDE4D7]">
+                        <button onclick="toggleWishlist('${product.filename}', this, event)" 
+                                class="px-4 py-2 border border-[#D4C9B3] rounded-xl">
                             <i class="fa-heart ${isWishlisted ? 'fa-solid text-red-500' : 'fa-regular'}"></i>
                         </button>
                     </div>
                 </div>
             `;
 
-            card.querySelector('img').addEventListener('click', () => showImageModal(filename));
+            card.querySelector('img').onclick = () => showQuickView(product);
             return card;
         }
 
-        // Search
-        document.getElementById('search-input').addEventListener('input', function() {
-            const term = this.value.toLowerCase();
-            document.querySelectorAll('#gallery .snap-card').forEach(card => {
-                const title = card.querySelector('.font-semibold').textContent.toLowerCase();
-                card.style.display = title.includes(term) ? '' : 'none';
-            });
-        });
+        // Quick View
+        function showQuickView(product) {
+            currentQuickView = product;
+            document.getElementById('quickview-image').src = product.filename;
+            document.getElementById('quickview-name').innerText = product.filename.replace('.jpg','').replace(/-/g,' ');
+            document.getElementById('quickview-price').innerText = `$${product.price}`;
 
-        // Filter
-        function filterGallery(type) {
-            document.querySelectorAll('#gallery .snap-card').forEach(card => {
-                if (type === 'all') {
-                    card.style.display = '';
-                } else {
-                    card.style.display = card.dataset.color === type ? '' : 'none';
-                }
+            const sizeContainer = document.getElementById('size-options');
+            sizeContainer.innerHTML = '';
+            ['M5/W7','M6/W8','M7/W9','M8/W10','M9/W11','M10/W12'].forEach(size => {
+                const btn = document.createElement('button');
+                btn.className = 'px-4 py-1.5 text-sm border border-[#D4C9B3] rounded-xl hover:bg-[#EDE4D7]';
+                btn.innerText = size;
+                btn.onclick = () => {
+                    document.querySelectorAll('#size-options button').forEach(b => b.classList.remove('bg-[#3f2e1f]', 'text-white'));
+                    btn.classList.add('bg-[#3f2e1f]', 'text-white');
+                    currentQuickView.selectedSize = size;
+                };
+                sizeContainer.appendChild(btn);
             });
-            document.querySelectorAll('[id^="filter-"]').forEach(btn => btn.classList.remove('bg-[#3f2e1f]', 'text-white'));
-            document.getElementById(`filter-${type}`).classList.add('bg-[#3f2e1f]', 'text-white');
+
+            document.getElementById('quickview-modal').classList.remove('hidden');
+            document.getElementById('quickview-modal').classList.add('flex');
+        }
+
+        function hideQuickView() {
+            document.getElementById('quickview-modal').classList.add('hidden');
+            document.getElementById('quickview-modal').classList.remove('flex');
+        }
+
+        function addToCartFromQuickView() {
+            if (!currentQuickView) return;
+            const size = currentQuickView.selectedSize || 'M7/W9';
+            addToCart(currentQuickView.filename, currentQuickView.price, null, size);
+            hideQuickView();
         }
 
         // Cart
-        function addToCart(filename) {
-            cart.push(filename);
+        function addToCart(filename, price, e = null, size = 'M7/W9') {
+            if (e) e.stopImmediatePropagation();
+            const existing = cart.findIndex(item => item.filename === filename && item.size === size);
+            if (existing !== -1) {
+                cart[existing].quantity++;
+            } else {
+                cart.push({ filename, price, quantity: 1, size });
+            }
+            saveCart();
             updateCartCount();
-            alert(`Đã thêm ${filename} vào giỏ hàng`);
         }
 
         function updateCartCount() {
-            document.getElementById('cart-count').innerText = cart.length;
+            const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cart-count').innerText = count;
         }
 
-        function showCart() {
-            if (cart.length === 0) return alert("Giỏ hàng trống.");
-            alert("Giỏ hàng:\n" + cart.join("\n"));
+        function saveCart() {
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+
+        function showCartModal() {
+            const modal = document.getElementById('cart-modal');
+            const container = document.getElementById('cart-items');
+            container.innerHTML = '';
+
+            if (cart.length === 0) {
+                container.innerHTML = `<p class="text-center py-8 text-zinc-500">カートが空です。</p>`;
+            } else {
+                let html = '';
+                cart.forEach((item, index) => {
+                    html += `
+                        <div class="flex gap-4 items-center border-b pb-4">
+                            <img src="${item.filename}" class="w-16 h-16 object-cover rounded-xl">
+                            <div class="flex-1">
+                                <div class="font-medium">${item.filename}</div>
+                                <div class="text-sm text-zinc-500">Size: ${item.size}</div>
+                                <div class="flex items-center gap-3 mt-2">
+                                    <button onclick="changeQuantity(${index}, -1)" class="w-7 h-7 border rounded">-</button>
+                                    <span>${item.quantity}</span>
+                                    <button onclick="changeQuantity(${index}, 1)" class="w-7 h-7 border rounded">+</button>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <div class="font-semibold">$${item.price * item.quantity}</div>
+                                <button onclick="removeFromCart(${index})" class="text-red-500 text-xs mt-1">削除</button>
+                            </div>
+                        </div>`;
+                });
+                container.innerHTML = html;
+            }
+            updateCartTotal();
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function changeQuantity(index, change) {
+            cart[index].quantity = Math.max(1, cart[index].quantity + change);
+            saveCart();
+            showCartModal();
+            updateCartCount();
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            saveCart();
+            showCartModal();
+            updateCartCount();
+        }
+
+        function updateCartTotal() {
+            const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+            document.getElementById('cart-total').innerText = `$${total}`;
+        }
+
+        function hideCartModal() {
+            document.getElementById('cart-modal').classList.add('hidden');
+            document.getElementById('cart-modal').classList.remove('flex');
+        }
+
+        function checkout() {
+            alert("Thank you for your purchase! (Demo)");
+            cart = [];
+            saveCart();
+            updateCartCount();
+            hideCartModal();
         }
 
         // Wishlist
-        function toggleWishlist(filename, element) {
+        function toggleWishlist(filename, element, e) {
+            if (e) e.stopImmediatePropagation();
             const icon = element.querySelector('i');
             if (wishlist.includes(filename)) {
                 wishlist = wishlist.filter(item => item !== filename);
@@ -304,64 +485,73 @@
                 icon.classList.remove('fa-regular');
             }
             localStorage.setItem('wishlist', JSON.stringify(wishlist));
+            updateWishlistCount();
         }
 
-        function showWishlist() {
-            if (wishlist.length === 0) return alert("Wishlist trống.");
-            alert("Wishlist:\n" + wishlist.join("\n"));
+        function updateWishlistCount() {
+            document.getElementById('wishlist-count').innerText = wishlist.length;
         }
 
-        // Modal
-        function showImageModal(filename) {
-            const modal = document.createElement('div');
-            modal.className = 'fixed inset-0 bg-black/90 z-[999] flex items-center justify-center p-6';
-            modal.innerHTML = `
-                <div class="relative max-w-5xl w-full">
-                    <img src="${filename}" class="w-full max-h-[80vh] object-contain rounded-3xl" alt="${filename}">
-                    <div class="absolute top-4 right-4 flex gap-3">
-                        <button onclick="shareImage('${filename}')" class="bg-white text-black px-5 py-2 rounded-full text-sm font-medium flex items-center gap-x-2">
-                            <i class="fa-solid fa-share-alt"></i> Share
-                        </button>
-                        <button onclick="this.closest('.fixed').remove()" class="bg-white text-black w-11 h-11 rounded-full flex items-center justify-center text-2xl font-bold">×</button>
-                    </div>
-                </div>
-            `;
-            document.body.appendChild(modal);
-        }
+        function showWishlistModal() {
+            const modal = document.getElementById('wishlist-modal');
+            const container = document.getElementById('wishlist-items');
+            container.innerHTML = '';
 
-        function shareImage(filename) {
-            if (navigator.share) {
-                navigator.share({ title: 'NHAN NGUYEN', text: filename, url: window.location.href });
+            if (wishlist.length === 0) {
+                container.innerHTML = `<p class="col-span-full text-center py-10">ウィッシュリストが空です。</p>`;
             } else {
-                alert("Trình duyệt không hỗ trợ chia sẻ.");
+                wishlist.forEach(filename => {
+                    const div = document.createElement('div');
+                    div.className = 'border rounded-2xl overflow-hidden';
+                    div.innerHTML = `
+                        <img src="${filename}" class="w-full aspect-video object-cover">
+                        <div class="p-3">
+                            <div class="font-medium text-sm mb-2">${filename}</div>
+                            <div class="flex gap-2">
+                                <button onclick="addToCart('${filename}', 120); hideWishlistModal()" class="flex-1 text-xs bg-[#3f2e1f] text-white py-1.5 rounded">カートに追加</button>
+                                <button onclick="removeFromWishlist('${filename}')" class="text-xs px-3 border rounded text-red-500">削除</button>
+                            </div>
+                        </div>`;
+                    container.appendChild(div);
+                });
             }
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
         }
 
-        // Mobile Menu
-        function toggleMobileMenu() {
-            const menu = document.createElement('div');
-            menu.className = 'fixed inset-0 bg-white z-[100] p-8 md:hidden';
-            menu.innerHTML = `
-                <div class="flex justify-between mb-8">
-                    <span class="text-3xl font-semibold logo-font">NHAN NGUYEN</span>
-                    <button class="text-3xl">×</button>
-                </div>
-                <div class="flex flex-col gap-y-6 text-xl">
-                    <a href="#snaps">Collection</a>
-                    <a href="#how">How it Works</a>
-                    <a href="#pricing">Pricing</a>
-                    <a href="#contact">Contact</a>
-                </div>
-            `;
-            document.body.appendChild(menu);
-            menu.querySelector('button').onclick = () => menu.remove();
+        function removeFromWishlist(filename) {
+            wishlist = wishlist.filter(item => item !== filename);
+            localStorage.setItem('wishlist', JSON.stringify(wishlist));
+            updateWishlistCount();
+            showWishlistModal();
         }
 
-        // Khởi chạy
+        function hideWishlistModal() {
+            document.getElementById('wishlist-modal').classList.add('hidden');
+            document.getElementById('wishlist-modal').classList.remove('flex');
+        }
+
+        // Sort & Search
+        function sortGallery() {
+            const sortType = document.getElementById('sort-select').value;
+            let products = [...allProducts];
+            if (sortType === 'price-low') products.sort((a, b) => a.price - b.price);
+            if (sortType === 'price-high') products.sort((a, b) => b.price - a.price);
+            renderGallery(products);
+        }
+
+        document.getElementById('search-input').addEventListener('input', function() {
+            const term = this.value.toLowerCase();
+            document.querySelectorAll('#gallery .snap-card').forEach(card => {
+                card.style.display = card.dataset.filename.toLowerCase().includes(term) ? '' : 'none';
+            });
+        });
+
+        // Init
         window.onload = () => {
             loadGallery();
             updateCartCount();
-            document.getElementById('filter-all').classList.add('bg-[#3f2e1f]', 'text-white');
+            updateWishlistCount();
         };
     </script>
 </body>
