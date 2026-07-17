@@ -244,13 +244,14 @@
         let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
         let currentQuickView = null;
 
-        // ================== LOAD FROM images.json ==================
+        // ================== LOAD FROM images.json (ĐÃ FIX CACHE) ==================
         async function loadGallery() {
             const gallery = document.getElementById('gallery');
             gallery.innerHTML = '';
 
             try {
-                const response = await fetch('images.json');
+                // Cache busting để tránh lỗi cache GitHub Pages
+                const response = await fetch('images.json?t=' + Date.now());
                 
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
@@ -271,6 +272,7 @@
                     <div class="col-span-full text-center py-10">
                         <p class="text-red-500 font-medium mb-2">Cannot load images.json</p>
                         <p class="text-sm text-zinc-500">Please make sure the file exists in the root folder and has been committed.</p>
+                        <p class="text-xs text-zinc-400 mt-2">Try hard refresh (Ctrl + Shift + R)</p>
                     </div>
                 `;
             }
