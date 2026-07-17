@@ -251,10 +251,11 @@
 
             try {
                 const res = await fetch('images.json');
+                if (!res.ok) throw new Error("Cannot load images.json");
                 allProducts = await res.json();
                 renderGallery(allProducts);
             } catch (error) {
-                gallery.innerHTML = `<p class="text-red-500 col-span-full text-center py-10">Cannot load images.json</p>`;
+                gallery.innerHTML = `<p class="text-red-500 col-span-full text-center py-10">Cannot load images.json. Please check the file.</p>`;
             }
         }
 
@@ -280,8 +281,6 @@
                     <div class="flex justify-between items-start">
                         <div>
                             <div class="font-semibold">${product.filename.replace('.jpg','').replace(/-/g,' ')}</div>
-                            
-                            <!-- THÔNG TIN TÁC GIẢ BẰNG TIẾNG ANH -->
                             <div class="text-xs text-zinc-500 mt-1">
                                 <strong>Author:</strong> NHAN NGUYEN<br>
                                 <strong>First Published:</strong> July 2, 2014
